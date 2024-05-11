@@ -35,6 +35,21 @@ $stmt_student_grades = $conn->prepare($sql_student_grades);
 $stmt_student_grades->bind_param("ii", $student_id, $course_id);
 $stmt_student_grades->execute();
 $result_student_grades = $stmt_student_grades->get_result();
+
+// Prepara i dati per il grafico
+$labels = [];
+$data = [];
+
+while ($row = $result_student_grades->fetch_assoc()) {
+    $data[] = $row['grade'];
+    // Possibili label
+    $labels[] = ''; // Qui puoi inserire eventuali nomi o descrizioni per ciascun voto
+}
+
+$chart_data = json_encode([
+    'labels' => $labels,
+    'data' => $data
+]);
 ?>
 
 <!DOCTYPE html>
@@ -44,10 +59,22 @@ $result_student_grades = $stmt_student_grades->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voti per <?php echo $course_name; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        canvas {
+            max-width: 400px;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
 </head>
 <body class="bg-gray-900 text-white">
     <div class="container mx-auto p-4">
-        <h2 class="text-2xl font-bold mb-4">Voti per <?php echo $course_name; ?></h2>
+        <h2 class="text-2xl font-bold mb-4">Andamento dei Voti per <?php echo $course_name; ?></h2>
+
+        <canvas id="myChart" width="400" height="200"></canvas>
+
+        <h2 class="text-xl font-bold mt-8 mb-4">Voti per <?php echo $course_name; ?></h2>
 
         <table class="w-full">
             <thead>
@@ -57,6 +84,7 @@ $result_student_grades = $stmt_student_grades->get_result();
             </thead>
             <tbody>
                 <?php
+                $result_student_grades->data_seek(0); // Riporta l'indice del risultato alla posizione iniziale
                 if ($result_student_grades->num_rows > 0) {
                     while ($row = $result_student_grades->fetch_assoc()) {
                         $grade = $row['grade'];
@@ -88,10 +116,33 @@ $result_student_grades = $stmt_student_grades->get_result();
             <p class="text-sm text-gray-400">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
         </div>
     </footer>
+
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chartData = <?php echo $chart_data; ?>;
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartData.labels,
+                datasets: [{
+                    label: 'Andamento Voti',
+                    data: chartData.data,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
-
-
 
 <?php
 // Chiudi la connessione al database
