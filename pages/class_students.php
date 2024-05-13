@@ -44,6 +44,7 @@ $result_students = $stmt_students->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studenti della Classe <?php echo $class_name; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../icon/icon.ico">
 </head>
 <body class="bg-gray-900 text-white flex justify-center items-start h-screen">
     <div class="container mx-auto p-2 flex flex-col justify-start items-center">
@@ -76,9 +77,17 @@ $result_students = $stmt_students->get_result();
             </table>
         </div>
 
-        <div class="mt-2 text-center">
-            <p><a href="teacher_dashboard.php" class="text-blue-500 hover:text-blue-600">Torna alla Dashboard Insegnante</a></p>
-        </div>
+        <div class="mt-4 flex justify-center items-center">
+    <a href="teacher_dashboard.php" class="text-blue-500 hover:text-blue-600 font-semibold text-sm inline-flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 mr-2">
+            <path fill-rule="evenodd" d="M10 0a5 5 0 0 1 5 5c0 2.425-1.774 4.428-4.074 4.898A8 8 0 0 1 16 18H4a8 8 0 0 1 5.074-8.102C6.774 9.428 5 7.425 5 5a5 5 0 0 1 5-5zm0 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 2c-2.667 0-8 1.333-8 4v2h16v-2c0-2.667-5.333-4-8-4z" clip-rule="evenodd"/>
+        </svg>
+        Torna alla Dashboard Insegnante
+    </a>
+</div>
+
+
+
 
         <!-- Footer -->
         <footer class="text-center mt-4">

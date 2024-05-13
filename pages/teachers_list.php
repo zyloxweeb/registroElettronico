@@ -24,6 +24,7 @@ $result_teachers = $conn->query($sql_teachers);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elenco Insegnanti</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../icon/icon.ico">
 </head>
 <body class="bg-gray-100 text-gray-900">
     <div class="container mx-auto p-4">

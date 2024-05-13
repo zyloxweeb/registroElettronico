@@ -60,6 +60,7 @@ $chart_data = json_encode([
     <title>Voti per <?php echo $course_name; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" type="image/x-icon" href="../icon/icon.ico">
     <style>
         canvas {
             max-width: 400px;
@@ -107,14 +108,21 @@ $chart_data = json_encode([
                 ?>
             </tbody>
         </table>
-
-        <p class="mt-4"><a href="student_dashboard.php" class="text-blue-500 hover:text-blue-600">Torna alla Dashboard Studente</a></p>
     </div>
 
-    <footer class="footer absolute bottom-0 w-full bg-gray-800 py-4 text-center">
-        <div class="container mx-auto">
-            <p class="text-sm text-gray-400">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
-        </div>
+    <div class="mt-4 flex justify-center items-center">
+    <a href="teacher_dashboard.php" class="text-blue-500 hover:text-blue-600 font-semibold text-sm inline-flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 mr-2">
+            <path fill-rule="evenodd" d="M10 0a5 5 0 0 1 5 5c0 2.425-1.774 4.428-4.074 4.898A8 8 0 0 1 16 18H4a8 8 0 0 1 5.074-8.102C6.774 9.428 5 7.425 5 5a5 5 0 0 1 5-5zm0 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 2c-2.667 0-8 1.333-8 4v2h16v-2c0-2.667-5.333-4-8-4z" clip-rule="evenodd"/>
+        </svg>
+        Torna alla Dashboard Studente
+    </a>
+    </div>
+
+    <footer class="footer mt-8 py-4 bg-gray-800 text-white">
+    <div class="container mx-auto text-center">
+        <p class="text-sm">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
+    </div>
     </footer>
 
     <script>

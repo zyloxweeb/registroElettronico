@@ -32,6 +32,7 @@ $result_classes = $conn->query($sql_classes);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Insegnante</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../icon/icon.ico">
 </head>
 <body class="bg-gray-900 text-white flex justify-center items-center h-screen">
     <div class="container mx-auto p-8">
@@ -59,7 +60,7 @@ $result_classes = $conn->query($sql_classes);
         </div>
 
         <div class="mt-8 text-center">
-            <p><a href="logout.php" class="text-blue-500 hover:text-blue-600">Logout</a></p>
+            <p><a href="logout.php" class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Logout</a></p>
         </div>
 
         <!-- Footer -->

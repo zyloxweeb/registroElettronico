@@ -43,6 +43,7 @@ $result_courses = $stmt_courses->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Studente</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../icon/icon.ico">
 </head>
 <body class="bg-gray-900 text-white">
     <div class="container mx-auto p-4">
@@ -88,8 +89,12 @@ $result_courses = $stmt_courses->get_result();
             </table>
         </div>
 
-        <p class="mt-4"><a href="logout.php" class="text-blue-500 hover:text-blue-600">Esci</a></p>
     </div>
+
+    <div class="mt-8 text-center">
+        <p><a href="logout.php" class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Logout</a></p>
+    </div>
+
 
     <footer class="footer absolute bottom-0 w-full bg-gray-800 py-4 text-center">
         <div class="container mx-auto">

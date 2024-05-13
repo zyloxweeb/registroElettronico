@@ -100,6 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['assign_class_to_teach
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Amministrazione</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../icon/icon.ico">
 </head>
 <body class="bg-gray-900 text-white">
     <div class="container mx-auto p-8">
@@ -203,7 +204,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['assign_class_to_teach
         </div>
 
         <div class="mt-8">
-            <p><a href="logout.php" class="text-blue-500 hover:text-blue-600">Logout</a></p>
+            <p><a href="logout.php" class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Logout</a></p>
         </div>
 
         <!-- Footer -->
