@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benvenuto</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../icon/icon.ico">
+
 </head>
 <body class="bg-gray-900 text-white">
     <div class="flex flex-col justify-center items-center h-screen">
