@@ -43,15 +43,15 @@ Siamo lieti di accogliere contributi da parte della community! Se sei interessat
 Se desideri compilare il progetto sul tuo ambiente locale, segui questi passaggi:
 
 1. Assicurati di avere installato [requisito 1], [requisito 2], ecc.
-2. Clona il repository: `git clone https://github.com/utente/nome-progetto.git`
-3. Naviga nella directory del progetto: `cd nome-progetto`
+2. Clona il repository: `git clone https://github.com/zyloxweeb/registroElettronico.git`
+3. Naviga nella directory del progetto: `cd registroElettronico`
 4. Esegui `comando di compilazione` per compilare il progetto.
 
 Assicurati di seguire eventuali istruzioni specifiche nel file `README.md` del repository.
 
 ### Segnalazione di Bug
 
-Se trovi un bug, ti preghiamo di segnalarlo! Apri una nuova issue nel [tracker delle issue](https://github.com/utente/nome-progetto/issues) del repository. Assicurati di includere il maggior numero possibile di dettagli, come il sistema operativo, il browser o l'ambiente in cui hai riscontrato il problema, nonché i passaggi per riprodurlo.
+Se trovi un bug, ti preghiamo di segnalarlo! Apri una nuova issue nel [tracker delle issue](https://github.com/zyloxweeb/registroElettronico/issues) del repository. Assicurati di includere il maggior numero possibile di dettagli, come il sistema operativo, il browser o l'ambiente in cui hai riscontrato il problema, nonché i passaggi per riprodurlo.
 
 ### Proposta di Nuove Funzionalità
 
