@@ -27,35 +27,40 @@ $result_students = $conn->query($sql_students);
 <body class="bg-gray-100 text-gray-900">
     <div class="container mx-auto p-4">
         <h2 class="text-2xl font-bold mb-4">Elenco Studenti</h2>
-        <table class="w-full border-collapse border border-gray-300">
-            <thead class="bg-gray-200">
-                <tr>
-                    <th class="py-2 px-4 border border-gray-300">ID</th>
-                    <th class="py-2 px-4 border border-gray-300">Nome</th>
-                    <th class="py-2 px-4 border border-gray-300">Classe</th>
-                    <th class="py-2 px-4 border border-gray-300">Elimina</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                if ($result_students->num_rows > 0) {
-                    while ($row = $result_students->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td class='py-2 px-4 border border-gray-300'>" . $row['id'] . "</td>";
-                        echo "<td class='py-2 px-4 border border-gray-300'>" . $row['name'] . "</td>";
-                        echo "<td class='py-2 px-4 border border-gray-300'>" . $row['class'] . "</td>";
-                        // Aggiungi il link per eliminare lo studente
-                        echo "<td class='py-2 px-4 border border-gray-300'>";
-                        echo "<a href=\"delete_student.php?student_id={$row['id']}\" class=\"bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600\">Elimina</a>";
-                        echo "</td>";
-                        echo "</tr>";
+        <div class="flex justify-between mb-4">
+            <table class="w-full border-collapse border border-gray-300">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="py-2 px-4 border border-gray-300">ID</th>
+                        <th class="py-2 px-4 border border-gray-300">Nome</th>
+                        <th class="py-2 px-4 border border-gray-300">Classe</th>
+                        <th class="py-2 px-4 border border-gray-300">Elimina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if ($result_students->num_rows > 0) {
+                        while ($row = $result_students->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td class='py-2 px-4 border border-gray-300'>" . $row['id'] . "</td>";
+                            echo "<td class='py-2 px-4 border border-gray-300'>" . $row['name'] . "</td>";
+                            echo "<td class='py-2 px-4 border border-gray-300'>" . $row['class'] . "</td>";
+                            // Aggiungi il link per eliminare lo studente
+                            echo "<td class='py-2 px-4 border border-gray-300'>";
+                            echo "<a href=\"delete_student.php?student_id={$row['id']}\" class=\"bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600\">Elimina</a>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4' class='py-2 px-4 border border-gray-300'>Nessuno studente trovato</td></tr>";
                     }
-                } else {
-                    echo "<tr><td colspan='4' class='py-2 px-4 border border-gray-300'>Nessuno studente trovato</td></tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <a href="generate_student_list_pdf.php" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Scarica PDF</a>
+        </div>
         <p class="mt-4"><a href="admin_dashboard.php" class="text-blue-500 hover:text-blue-600">Torna alla Dashboard</a></p>
     </div>
 
