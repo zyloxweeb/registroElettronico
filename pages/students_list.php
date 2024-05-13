@@ -22,6 +22,7 @@ $result_students = $conn->query($sql_students);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elenco Studenti</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../icon/icon.ico">
 </head>
 <body class="bg-gray-100 text-gray-900">
     <div class="container mx-auto p-4">
@@ -58,11 +59,12 @@ $result_students = $conn->query($sql_students);
         <p class="mt-4"><a href="admin_dashboard.php" class="text-blue-500 hover:text-blue-600">Torna alla Dashboard</a></p>
     </div>
 
-    <footer class="footer absolute bottom-0 w-full bg-gray-800 py-4 text-center">
-        <div class="container mx-auto">
-            <p class="text-sm text-gray-400">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
-        </div>
+    <footer class="footer mt-8 py-4 bg-gray-800 text-white">
+    <div class="container mx-auto text-center">
+        <p class="text-sm">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
+    </div>
     </footer>
+
 </body>
 </html>
 
