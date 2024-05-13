@@ -101,11 +101,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['assign_class_to_teach
     <title>Dashboard - Amministrazione</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../icon/icon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body class="bg-gray-900 text-white">
     <div class="container mx-auto p-8">
         <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-2">Benvenuto, <?php echo $user['username']; ?>!</h2>
+        <div id="animated-text" class="text-3xl font-bold mb-2"></div> <!-- Testo animato -->
         <p class="text-lg">Ti trovi nell'area di amministrazione del Registro Elettronico.</p>
         <p class="text-sm text-gray-400">Qui puoi gestire gli studenti, gli insegnanti e le classi.</p>
     </div>
@@ -212,6 +213,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['assign_class_to_teach
             <p>&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
         </footer>
     </div>
+
+    <script>
+        var options = {
+            strings: ['Benvenuto, <?php echo $user['username']; ?>!'],
+            typeSpeed: 100,
+            loop: false
+        };
+
+        var typed = new Typed('#animated-text', options);
+    </script>
 </body>
 </html>
 

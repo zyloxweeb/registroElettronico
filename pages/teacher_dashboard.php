@@ -33,11 +33,12 @@ $result_classes = $conn->query($sql_classes);
     <title>Dashboard - Insegnante</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../icon/icon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body class="bg-gray-900 text-white flex justify-center items-center h-screen">
     <div class="container mx-auto p-8">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-2">Benvenuto, <?php echo $user['username']; ?>!</h2>
+            <div id="animated-text" class="text-3xl font-bold mb-2"></div> <!-- Testo animato -->
             <p class="text-lg">Ti trovi nell'area riservata agli insegnanti.</p>
             <p class="text-sm text-gray-400">Qui puoi visualizzare le classi in cui insegni.</p>
         </div>
@@ -68,6 +69,17 @@ $result_classes = $conn->query($sql_classes);
             <p>&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
         </footer>
     </div>
+
+    <script>
+        var options = {
+            strings: ['Benvenuto, <?php echo $user['username']; ?>!'],
+            typeSpeed: 100,
+            loop: false
+        };
+
+        var typed = new Typed('#animated-text', options);
+    </script>
+    
 </body>
 </html>
 

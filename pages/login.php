@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../icon/icon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <style>
         html, body {
             height: 100%;
@@ -54,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="bg-gray-900 text-white flex justify-center items-center h-full">
     <div class="w-full max-w-sm">
+        <div id="animated-text" class="text-4xl mb-4 text-center font-bold"></div> <!-- Testo animato -->
         <div class="bg-gray-800 rounded-lg shadow-lg p-8">
             <h2 class="text-2xl mb-4 text-center">Login</h2>
             <?php if (isset($error)) { ?>
@@ -77,7 +79,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p>&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
         </footer>
     </div>
+
+    <script>
+        var options = {
+            strings: ['Registro Elettronico'],
+            typeSpeed: 100,
+            loop: false
+        };
+
+        var typed = new Typed('#animated-text', options);
+    </script>
 </body>
 </html>
+
 
 

@@ -44,10 +44,12 @@ $result_courses = $stmt_courses->get_result();
     <title>Dashboard Studente</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../icon/icon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body class="bg-gray-900 text-white">
     <div class="container mx-auto p-4">
-        <h2 class="text-2xl font-bold mb-4">Dashboard Studente</h2>
+
+    <div id="animated-text" class="text-3xl font-bold mb-2"></div> <!-- Testo animato -->
 
         <div class="overflow-hidden">
             <table class="w-full">
@@ -101,6 +103,17 @@ $result_courses = $stmt_courses->get_result();
             <p class="text-sm text-gray-400">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
         </div>
     </footer>
+
+    <script>
+        var options = {
+            strings: ['Benvenuto, <?php echo $user['username']; ?>!'],
+            typeSpeed: 100,
+            loop: false
+        };
+
+        var typed = new Typed('#animated-text', options);
+    </script>
+
 </body>
 </html>
 
