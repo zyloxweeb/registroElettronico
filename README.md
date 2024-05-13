@@ -55,7 +55,7 @@ Se trovi un bug, ti preghiamo di segnalarlo! Apri una nuova issue nel [tracker d
 
 ### Proposta di Nuove Funzionalità
 
-Se hai un'idea per una nuova funzionalità o miglioramento, sei il benvenuto a condividerla! Apri una nuova issue nel [tracker delle issue](https://github.com/utente/registroElettronico/issues) del repository. Descrivi chiaramente la tua proposta e, se possibile, fornisci esempi o documentazione su come potrebbe essere implementata.
+Se hai un'idea per una nuova funzionalità o miglioramento, sei il benvenuto a condividerla! Apri una nuova issue nel [tracker delle issue](https://github.com/zyloxweeb/registroElettronico/issues) del repository. Descrivi chiaramente la tua proposta e, se possibile, fornisci esempi o documentazione su come potrebbe essere implementata.
 
 ### Invio di Pull Request
 
