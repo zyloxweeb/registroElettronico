@@ -13,8 +13,6 @@ include '../includes/database.php';
 // Ottieni l'elenco degli insegnanti dal database
 $sql_teachers = "SELECT * FROM teachers";
 $result_teachers = $conn->query($sql_teachers);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -55,8 +53,11 @@ $result_teachers = $conn->query($sql_teachers);
                 ?>
             </tbody>
         </table>
-        <p class="mt-4"><a href="admin_dashboard.php" class="text-blue-500 hover:text-blue-600">Torna alla Dashboard</a></p>
     </div>
+    <div>
+        <a href="generate_teacher_list_pdf.php" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Scarica PDF</a>
+    </div>
+    <p class="mt-4"><a href="admin_dashboard.php" class="text-blue-500 hover:text-blue-600">Torna alla Dashboard</a></p>
 
     <footer class="footer absolute bottom-0 w-full bg-gray-800 py-4 text-center">
         <div class="container mx-auto">
