@@ -86,14 +86,11 @@ $result_students = $stmt_students->get_result();
     </a>
 </div>
 
-
-
-
-        <!-- Footer -->
-        <footer class="text-center mt-4">
-            <p class="text-xs">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
-        </footer>
-    </div>
+    <footer class="footer absolute bottom-0 w-full bg-gray-800 py-4 text-center">
+        <div class="container mx-auto">
+            <p class="text-sm text-gray-400">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
 </body>
 </html>
 

@@ -33,6 +33,7 @@ $result_teachers = $conn->query($sql_teachers);
                     <th class="py-2 px-4 border border-gray-300">ID</th>
                     <th class="py-2 px-4 border border-gray-300">Nome</th>
                     <th class="py-2 px-4 border border-gray-300">Materia</th>
+                    <th class="py-2 px-4 border border-gray-300">Azioni</th>
                     <!-- Aggiungi altre colonne se necessario (come classi insegnate, ecc.) -->
                 </tr>
             </thead>
@@ -44,7 +45,10 @@ $result_teachers = $conn->query($sql_teachers);
                         echo "<td class='py-2 px-4 border border-gray-300'>" . $row['id'] . "</td>";
                         echo "<td class='py-2 px-4 border border-gray-300'>" . $row['name'] . "</td>";
                         echo "<td class='py-2 px-4 border border-gray-300'>" . $row['subject'] . "</td>";
-                        // Aggiungi altre colonne per altri dettagli se necessario
+                        echo "<td class='py-2 px-4 border border-gray-300'>";
+                        echo "<a href=\"edit_teacher.php?teacher_id={$row['id']}\" class=\"bg-yellow-400 text-white px-4 py-1 rounded hover:bg-yellow-500\">Modifica</a>";
+                        echo "<a href=\"delete_teacher.php?teacher_id={$row['id']}\" class=\"bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 mx-10\">Elimina</a>";
+                        echo "</td>";
                         echo "</tr>";
                     }
                 } else {

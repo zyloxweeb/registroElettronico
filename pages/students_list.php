@@ -34,7 +34,7 @@ $result_students = $conn->query($sql_students);
                         <th class="py-2 px-4 border border-gray-300">ID</th>
                         <th class="py-2 px-4 border border-gray-300">Nome</th>
                         <th class="py-2 px-4 border border-gray-300">Classe</th>
-                        <th class="py-2 px-4 border border-gray-300">Elimina</th>
+                        <th class="py-2 px-4 border border-gray-300">Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,7 +47,8 @@ $result_students = $conn->query($sql_students);
                             echo "<td class='py-2 px-4 border border-gray-300'>" . $row['class'] . "</td>";
                             // Aggiungi il link per eliminare lo studente
                             echo "<td class='py-2 px-4 border border-gray-300'>";
-                            echo "<a href=\"delete_student.php?student_id={$row['id']}\" class=\"bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600\">Elimina</a>";
+                            echo "<a href=\"edit_student.php?student_id={$row['id']}\" class=\"bg-yellow-400 text-white px-4 py-1 rounded hover:bg-yellow-500\">Modifica</a>";
+                            echo "<a href=\"delete_student.php?student_id={$row['id']}\" class=\"bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 mx-10\">Elimina</a>";
                             echo "</td>";
                             echo "</tr>";
                         }
@@ -64,10 +65,10 @@ $result_students = $conn->query($sql_students);
         <p class="mt-4"><a href="admin_dashboard.php" class="text-blue-500 hover:text-blue-600">Torna alla Dashboard</a></p>
     </div>
 
-    <footer class="footer mt-8 py-4 bg-gray-800 text-white">
-    <div class="container mx-auto text-center">
-        <p class="text-sm">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
-    </div>
+    <footer class="footer absolute bottom-0 w-full bg-gray-800 py-4 text-center">
+        <div class="container mx-auto">
+            <p class="text-sm text-gray-400">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
+        </div>
     </footer>
 
 </body>

@@ -51,7 +51,7 @@ $result_courses = $stmt_courses->get_result();
 
     <div id="animated-text" class="text-3xl font-bold mb-2"></div> <!-- Testo animato -->
 
-        <div class="overflow-hidden">
+        <div class="bg-gray-800 p-6 rounded-lg">
             <table class="w-full">
                 <thead>
                     <tr>
@@ -75,8 +75,8 @@ $result_courses = $stmt_courses->get_result();
                             echo "<td class='py-2 text-center'>";
                             echo "<div class='flex items-center justify-center'>";
                             echo "<div class='relative w-12 h-12'>";
-                            echo "<div class='absolute w-full h-full rounded-full bg-gray-800'></div>";
-                            echo "<div class='absolute w-full h-full rounded-full bg-$colore' style='clip-path: circle(calc($media_voti * 10% - 1px))'></div>";
+                            echo "<div class='absolute w-full h-full rounded-full bg-$colore-500'></div>";
+                            //echo "<div class='absolute w-full h-full rounded-full bg-$colore' style='clip-path: circle(calc($media_voti * 10% - 1px))'></div>";
                             echo "<div class='absolute inset-0 flex items-center justify-center text-xs'>$media_voti</div>";
                             echo "</div>";
                             echo "</div>";
@@ -89,7 +89,7 @@ $result_courses = $stmt_courses->get_result();
                     ?>
                 </tbody>
             </table>
-        </div>
+        </div>s
 
     </div>
 

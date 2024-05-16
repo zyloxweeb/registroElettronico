@@ -94,8 +94,8 @@ $chart_data = json_encode([
                         echo "<td class='py-2'>";
                         echo "<div class='flex items-center justify-center'>";
                         echo "<div class='relative w-12 h-12 mr-4'>";
-                        echo "<div class='absolute w-full h-full rounded-full bg-gray-800'></div>";
-                        echo "<div class='absolute w-full h-full rounded-full bg-$colore' style='clip-path: circle(calc($grade * 10% - 1px))'></div>";
+                        echo "<div class='absolute w-full h-full rounded-full bg-$colore-500'></div>";
+                        //echo "<div class='absolute w-full h-full rounded-full bg-$colore' style='clip-path: circle(calc($grade * 10% - 1px))'></div>";
                         echo "<div class='absolute inset-0 flex items-center justify-center text-xs'>$grade</div>";
                         echo "</div>";
                         echo "</div>";
@@ -119,10 +119,10 @@ $chart_data = json_encode([
     </a>
     </div>
 
-    <footer class="footer mt-8 py-4 bg-gray-800 text-white">
-    <div class="container mx-auto text-center">
-        <p class="text-sm">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
-    </div>
+    <footer class="footer absolute bottom-0 w-full bg-gray-800 py-4 text-center">
+        <div class="container mx-auto">
+            <p class="text-sm text-gray-400">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
+        </div>
     </footer>
 
     <script>
