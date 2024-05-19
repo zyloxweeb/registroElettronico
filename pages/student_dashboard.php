@@ -15,7 +15,7 @@ $user = $_SESSION['user'];
 
 // Verifica se l'utente è uno studente, altrimenti reindirizza alla dashboard appropriata
 if ($user['role'] !== 'student') {
-    header("Location: teacher_dashboard.php");
+    header("Location: dashboard.php");
     exit();
 }
 
@@ -62,7 +62,7 @@ $result_courses = $stmt_courses->get_result();
     <div class="container mx-auto p-4">
         <nav class="bg-gray-900 border-gray-200 dark:bg-gray-900 relative">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <div id="animated-text" class="text-3xl font-bold mb-2"></div> <!-- Testo animato -->
+
                 <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                     <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" onclick="toggleDropdown()">
                         <span class="sr-only">Open user menu</span>
@@ -91,13 +91,13 @@ $result_courses = $stmt_courses->get_result();
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
                     <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-900 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-gray-700 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
-                            <a href="#" class="block py-2 px-3 text-white bg-white-700 rounded md:bg-transparent md:text-white-700 md:p-0 md:dark:text-white-500" aria-current="page">Home</a>
+                            <a href="student_dashboard.php" class="block py-2 px-3 text-white bg-white-700 rounded md:bg-transparent md:text-white-700 md:p-0 md:dark:text-white-500" aria-current="page">Home</a>
                         </li>
                         <li>
-                            <a href="#" class="block py-2 px-3 text-white-900 rounded hover:bg-white-100 md:hover:bg-transparent md:hover:text-white-700 md:p-0 dark:text-white md:dark:hover:text-white-500 dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-white-700">Compiti</a>
+                            <a href="navbarStudent/homeworkStudent.php" class="block py-2 px-3 text-white-900 rounded hover:bg-white-100 md:hover:bg-transparent md:hover:text-white-700 md:p-0 dark:text-white md:dark:hover:text-white-500 dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-white-700">Compiti</a>
                         </li>
                         <li>
-                            <a href="#" class="block py-2 px-3 text-white-900 rounded hover:bg-white-100 md:hover:bg-transparent md:hover:text-white-700 md:p-0 dark:text-white md:dark:hover:text-white-500 dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-white-700">Note</a>
+                            <a href="navbarStudent/orario.php" class="block py-2 px-3 text-white-900 rounded hover:bg-white-100 md:hover:bg-transparent md:hover:text-white-700 md:p-0 dark:text-white md:dark:hover:text-white-500 dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-white-700">Orario</a>
                         </li>
                     </ul>
                 </div>
@@ -145,9 +145,7 @@ $result_courses = $stmt_courses->get_result();
             </table>
         </div>
 
-        <div class="mt-8 text-center">
-            <p><a href="logout.php" class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Logout</a></p>
-        </div>
+
 
         <footer class="footer bottom-0 w-full bg-gray-800 py-4 text-center my-10">
             <div class="container mx-auto">
@@ -157,14 +155,6 @@ $result_courses = $stmt_courses->get_result();
     </div>
     
     <script>
-        var options = {
-            strings: ['Benvenuto, <?php echo htmlspecialchars($user['username']); ?>!'],
-            typeSpeed: 100,
-            loop: false
-        };
-
-        var typed = new Typed('#animated-text', options);
-
         // Funzione per aprire o chiudere il menu
         function toggleDropdown() {
             var dropdownMenu = document.getElementById("user-dropdown");
