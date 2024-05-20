@@ -15,7 +15,9 @@ $user_id = $user['id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = !empty($_POST['username']) ? $_POST['username'] : $user['username'];
     $image_path = $user['profile_image'];
+    $password_changed = false;
 
+    // Gestione dell'immagine del profilo
     if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == UPLOAD_ERR_OK) {
         $profile_image = $_FILES['profile_image'];
         $upload_dir = '../../images/';
@@ -25,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $check = getimagesize($profile_image['tmp_name']);
         if ($check !== false) {
             if (move_uploaded_file($profile_image['tmp_name'], $upload_file)) {
-                $image_path = 'images/' . basename($profile_image['name']);
+                $image_path = '../images/' . basename($profile_image['name']);
             } else {
                 $error_message = "Errore nel caricamento dell'immagine.";
             }
@@ -34,17 +36,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Aggiorna le informazioni nel database
-    $sql_update = "UPDATE users SET username = ?, profile_image = ? WHERE id = ?";
-    $stmt_update = $conn->prepare($sql_update);
-    $stmt_update->bind_param("ssi", $username, $image_path, $user_id);
+    // Gestione della password
+    if (!empty($_POST['current_password']) && !empty($_POST['new_password']) && !empty($_POST['confirm_password'])) {
+        $current_password = $_POST['current_password'];
+        $new_password = $_POST['new_password'];
+        $confirm_password = $_POST['confirm_password'];
 
-    if ($stmt_update->execute()) {
-        $_SESSION['user']['username'] = $username;
-        $_SESSION['user']['profile_image'] = $image_path;
-        $success_message = "Informazioni aggiornate con successo.";
-    } else {
-        $error_message = "Errore nell'aggiornamento delle informazioni.";
+        if ($new_password !== $confirm_password) {
+            $error_message = "La nuova password e la conferma non coincidono.";
+        } else {
+            // Verifica la password corrente
+            $sql_password_check = "SELECT password FROM users WHERE id = ?";
+            $stmt_password_check = $conn->prepare($sql_password_check);
+            $stmt_password_check->bind_param("i", $user_id);
+            $stmt_password_check->execute();
+            $result_password_check = $stmt_password_check->get_result();
+            $row = $result_password_check->fetch_assoc();
+
+            if (password_verify($current_password, $row['password'])) {
+                // Aggiorna la password
+                $new_password_hashed = password_hash($new_password, PASSWORD_DEFAULT);
+                $sql_update_password = "UPDATE users SET password = ? WHERE id = ?";
+                $stmt_update_password = $conn->prepare($sql_update_password);
+                $stmt_update_password->bind_param("si", $new_password_hashed, $user_id);
+                $stmt_update_password->execute();
+                $password_changed = true;
+            } else {
+                $error_message = "La password corrente non è corretta.";
+            }
+        }
+    }
+
+    // Aggiorna le informazioni nel database
+    if (!isset($error_message)) {
+        $sql_update = "UPDATE users SET username = ?, profile_image = ? WHERE id = ?";
+        $stmt_update = $conn->prepare($sql_update);
+        $stmt_update->bind_param("ssi", $username, $image_path, $user_id);
+
+        if ($stmt_update->execute()) {
+            $_SESSION['user']['username'] = $username;
+            $_SESSION['user']['profile_image'] = $image_path;
+            $success_message = "Informazioni aggiornate con successo.";
+            if ($password_changed) {
+                $success_message .= " La password è stata cambiata con successo.";
+            }
+        } else {
+            $error_message = "Errore nell'aggiornamento delle informazioni.";
+        }
     }
 }
 
@@ -55,7 +93,6 @@ $stmt_user_info->bind_param("i", $user_id);
 $stmt_user_info->execute();
 $result_user_info = $stmt_user_info->get_result();
 $user_info = $result_user_info->fetch_assoc();
-
 ?>
 
 <!DOCTYPE html>
@@ -127,6 +164,18 @@ $user_info = $result_user_info->fetch_assoc();
                     <label for="profile_image" class="block mb-2 text-sm font-medium text-white">Immagine profilo</label>
                     <input type="file" name="profile_image" id="profile_image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
                 </div>
+                <div class="w-full">
+                    <label for="current_password" class="block mb-2 text-sm font-medium text-white">Password Corrente</label>
+                    <input type="password" name="current_password" id="current_password" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                </div>
+                <div class="w-full">
+                    <label for="new_password" class="block mb-2 text-sm font-medium text-white">Nuova Password</label>
+                    <input type="password" name="new_password" id="new_password" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                </div>
+                <div class="w-full">
+                    <label for="confirm_password" class="block mb-2 text-sm font-medium text-white">Conferma Nuova Password</label>
+                    <input type="password" name="confirm_password" id="confirm_password" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                </div>
                 <button type="submit" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Aggiorna</button>
             </form>
         </div>
@@ -143,7 +192,7 @@ $user_info = $result_user_info->fetch_assoc();
         function toggleDropdown() {
             var dropdownMenu = document.getElementById("user-dropdown");
             dropdownMenu.classList.toggle("hidden");
-            dropdownMenu.classList.toggle("open-dropdown"); // Aggiungi o rimuovi la classe per il posizionamento del menu
+            dropdownMenu.classList.toggle("open-dropdown");
         }
     </script>
 </body>
