@@ -162,7 +162,7 @@ $user_info = $result_user_info->fetch_assoc();
                 </div>
                 <div class="w-full">
                     <label for="profile_image" class="block mb-2 text-sm font-medium text-white">Immagine profilo</label>
-                    <input type="file" name="profile_image" id="profile_image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+                    <input type="file" name="profile_image" id="profile_image" class="block w-full text-sm bg-gray-700 text-gray-100 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
                 </div>
                 <div class="w-full">
                     <label for="current_password" class="block mb-2 text-sm font-medium text-white">Password Corrente</label>

@@ -6,22 +6,33 @@
     <title>Benvenuto</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="icon/icon.ico">
-
+    <style>
+        .form-container {
+            max-width: 400px;
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <div class="flex flex-col justify-center items-center h-screen">
-        <div class="container mx-auto p-4 text-center">
-            <h2 class="text-2xl font-bold mb-4">Benvenuto nel Registro Elettronico</h2>
-            <p class="mb-4">Questo è un sito per la gestione di tutti gli utenti di una scuola</p>
-            <p class="mb-4">Per iniziare, effettua l'accesso:</p>
-            <button onclick="location.href='pages/login.php'" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Accedi</button>
-        </div>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+    <div class="form-container bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+        <h2 class="text-2xl font-bold mb-4">Benvenuto nel Registro Elettronico</h2>
+        <p class="mb-4">Questo è un sito per la gestione di tutti gli utenti di una scuola</p>
+        <p class="mb-4">Per iniziare, effettua l'accesso:</p>
+
+        <form action="pages/dashboard.php" method="post" class="space-y-4">
+            <div class="flex items-center justify-center">
+                <input required id="link-checkbox" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="link-checkbox" class="ml-2 text-sm font-medium text-gray-300">I agree with the <a href="term.php" class="text-blue-600 dark:text-blue-500 hover:underline">terms and conditions</a>.</label>
+            </div>
+
+            <button id="submit-button" type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" disabled>Accedi</button>
+        </form>
     </div>
 
-    <footer class="footer bg-gray-800 py-4 text-center">
-        <div class="container mx-auto">
-            <p class="text-sm text-gray-400">&copy; <?php echo date("Y"); ?> Registro Elettronico. Tutti i diritti riservati.</p>
-        </div>
-    </footer>
+
+    <script>
+        document.getElementById('link-checkbox').addEventListener('change', function() {
+            document.getElementById('submit-button').disabled = !this.checked;
+        });
+    </script>
 </body>
 </html>
