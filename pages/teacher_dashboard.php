@@ -74,9 +74,6 @@ $result_courses = $stmt_courses->get_result();
                         </div>
                         <ul class="py-2" aria-labelledby="user-menu-button">
                             <li>
-                                <a href="dropdownProfile/teacher_info.php" class="block px-4 py-2 text-sm text-white-700 hover:bg-gray-500 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Info</a>
-                            </li>
-                            <li>
                                 <a href="dropdownProfile/teacher_settings.php" class="block px-4 py-2 text-sm text-white-700 hover:bg-gray-500 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
                             </li>
                             <li>

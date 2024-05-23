@@ -91,9 +91,6 @@ $profile_image = ($result_profile_image->num_rows > 0) ? $result_profile_image->
                         <li>
                             <a href="../navbarStudent/homeworkStudent.php" class="block py-2 px-3 text-white-900 rounded hover:bg-white-100 md:hover:bg-transparent md:hover:text-white-700 md:p-0 dark:text-white md:dark:hover:text-white-500 dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-white-700">Compiti</a>
                         </li>
-                        <li>
-                            <a href="../navbarStudent/orario.php" class="block py-2 px-3 text-white-900 rounded hover:bg-white-100 md:hover:bg-transparent md:hover:text-white-700 md:p-0 dark:text-white md:dark:hover:text-white-500 dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-white-700">Orario</a>
-                        </li>
                     </ul>
                 </div>
             </div>
